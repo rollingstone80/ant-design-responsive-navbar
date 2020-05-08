@@ -1,26 +1,71 @@
 import React from 'react';
-import logo from './logo.svg';
+import { Drawer, Layout, Menu, Typography } from 'antd';
+import { MenuOutlined } from '@ant-design/icons';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const { Header } = Layout; 
+const { Title } = Typography
+
+class App extends React.Component {
+  state = {
+    drawerVisible: false
+  };
+
+  showDrawer = () => {
+    this.setState({
+      drawerVisible: true
+    });
+  };
+
+  onClose = () => {
+    this.setState({
+      drawerVisible: false
+    });
+  };
+  
+  render() {
+    return(
+      <Layout className="layout">
+        <Header>
+          <div id="logo">
+            <Title level={3}>Logo</Title>
+          </div>
+          <Menu mode="horizontal">
+            <Menu.Item key="1">
+                <a href="">Link 1</a>
+            </Menu.Item>
+            <Menu.Item key="2">
+              <a href="">Link 2</a>
+            </Menu.Item>
+            <Menu.Item key="3">
+              <a href="">Link 3</a>
+            </Menu.Item>
+          </Menu>
+          <div id="hamburger" onClick={this.showDrawer}>
+            <MenuOutlined />
+          </div>
+          <Drawer
+            title="Menu"
+            placement="right"
+            onClose={this.onClose}
+            visible={this.state.drawerVisible}
+          >
+            <Menu mode="vertical">
+              <Menu.Item key="1">
+                  <a href="" onClick={this.onClose}>Link 1</a>
+              </Menu.Item>
+              <Menu.Item key="2">
+                <a href="" onClick={this.onClose}>Link 2</a>
+              </Menu.Item>
+              <Menu.Item key="3">
+                <a href="" onClick={this.onClose}>Link 3</a>
+              </Menu.Item>
+          </Menu>
+          </Drawer>
+        </Header>
+      </Layout>
+    )
+  }
 }
 
 export default App;
