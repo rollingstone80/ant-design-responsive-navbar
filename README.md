@@ -4,5 +4,6 @@ In this simple example, the top menu collapses at a 768px viewport into a menu b
 
 For use:
 1) git clone https://github.com/rollingstone80/ant-design-responsive-navbar.git
-2) yarn install
-3) yarn start
+2) cd ant-design-responsive-navbar
+3) yarn install
+4) yarn start
